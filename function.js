@@ -10,10 +10,16 @@ function createButtons(){
 }
 
 const btnLabels =["C", "+/-", "%", "/",
-            "7", "8", "9", "*",
-            "4", "5", "6", "-",
-            "1", "2", "3", "+",
-            "0", "0", ".", "=",
-            ];
+                "7", "8", "9", "*",
+                "4", "5", "6", "-",
+                "1", "2", "3", "+",
+                "0", "0", ".", "=",
+                ];
 
 createButtons();
+
+//operator functions
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
