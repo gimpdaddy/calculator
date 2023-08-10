@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: solid;
+    height: 700px;
+    width: 500px;
+}
+
+.display {
+    height: 16.667%;
+    font-size: 4em;
+    align-self: flex-end;
+}
+
+.buttonContainer {
+    /* flex: 0 1 83.333%; */
+    height: 83.333%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.btn {
+    border-radius: 50%;
+    width: 21%;
+    height: 16%;
+}
