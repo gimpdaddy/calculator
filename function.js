@@ -1,3 +1,16 @@
+//initial values
+let operandA = null;
+let operandB = null;
+let operator = null;
+let result = null;
+operatorList = ["/", "*", "-", "+"];
+
+function clear() {
+    operandA = null;
+    operandB = null;
+    operator = null;
+};
+
 //create and style buttons
 function createButtons(){
     for (i = 0; i < btnLabels.length; i++) { 
@@ -18,11 +31,6 @@ const btnLabels =["C", "+/-", "%", "/",
 
 createButtons();
 
-//user inputs
-let operandA = null;
-let operandB = null;
-let operator = null;
-
 //operator functions
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -30,13 +38,84 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 //operation
-const operate = (operator, a, b) => operator(a, b);
+// const operate = (operator, a, b) => operator(a, b);
+
+let displayText = "";
+
+function selectOperator(e) {
+    operandA = parseInt(displayText);
+    displayText = "";
+    operator = e.target.textContent;
+}
+
+function selectEquals(e) {
+    operandB = parseInt(displayText);
+
+    if (operator === "/") result = divide(operandA, operandB);
+    if (operator === "*") result = multiply(operandA, operandB);
+    if (operator === "-") result = subtract(operandA, operandB);
+    if (operator === "+") result = add(operandA, operandB);
+
+    clear();
+
+    displayText = result;
+    
+}
+
+function selectClear() {
+        clear();
+        displayText = "";
+}
 
 //screen display
-function displayOutput(e) {
+function updateDisplay(e) {
+
+    displayText += e.target.textContent;
+
+    if (e.target.textContent === "C") selectClear();
+
+    if (operatorList.includes(e.target.textContent)) selectOperator(e);
+
+    if (e.target.textContent === "=") selectEquals();
+
     const display = document.querySelector(".display");
-    display.innerHTML = e.target.textContent;
+    display.innerHTML = displayText;
+
 }
 
 const btns = document.querySelectorAll(".btn");
-btns.forEach(el => el.addEventListener("click", displayOutput));
+btns.forEach(el => el.addEventListener("click", updateDisplay));
+
+// need to get operandA from first series of inputs
+
+// need to get operandB after operator selected and before result requested
+
+// need to 
+
+
+
+//need to get sum from "+" etc
+
+    // if (e.target.textContent === "/" | e.target.textContent === "*" | e.target.textContent === "-" | e.target.textContent === "+") {
+    //     operandA = parseInt(displayText);
+    //     displayText = "";
+    // } else if (e.target.textContent === "=") {
+    //     operandB = parseInt(displayText);
+    // } else if (e.target.textContent === "C") {
+    //     clear()
+    // } else {
+    //     displayText = displayText + e.target.textContent;
+    // }
+
+    // if (operator) {
+    //     operandA = parseInt(displayText);
+    //     displayText = "";
+    // }
+    
+    // if (e.target.textContent === "=") operandB = parseInt(displayText);
+    // if (operatorList.includes(e.target.textContent)) operator = e.target.textContent;
+
+    // if (operator === "/" && e.target.textContent === "=") result = divide(operandA, operandB);
+    // if (operator === "*" && e.target.textContent === "=") result = multiply(operandA, operandB);
+    // if (operator === "-" && e.target.textContent === "=") result = subtract(operandA, operandB);
+    // if (operator === "+" && e.target.textContent === "=") result = add(operandA, operandB);
