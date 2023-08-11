@@ -42,6 +42,11 @@ const divide = (a, b) => a / b;
 
 let displayText = "";
 
+function selectClear() {
+    clear();
+    displayText = "";
+}
+
 function selectOperator(e) {
     operandA = parseInt(displayText);
     displayText = "";
@@ -50,21 +55,11 @@ function selectOperator(e) {
 
 function selectEquals(e) {
     operandB = parseInt(displayText);
-
     if (operator === "/") result = divide(operandA, operandB);
     if (operator === "*") result = multiply(operandA, operandB);
     if (operator === "-") result = subtract(operandA, operandB);
     if (operator === "+") result = add(operandA, operandB);
-
-    clear();
-
     displayText = result;
-    
-}
-
-function selectClear() {
-        clear();
-        displayText = "";
 }
 
 //screen display
