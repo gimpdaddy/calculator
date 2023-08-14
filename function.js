@@ -6,6 +6,7 @@ let operator = null;
 let result = 0;
 
 function clear() {
+    displayText.textContent = ""; 
     bString = "";
     a = 0;
     b = 0;
@@ -39,7 +40,7 @@ btnNumbers.forEach(el => el.addEventListener("click", displayBstring));
 const displayText = document.querySelector(".display");
 
 function displayBstring(e) {
-    if (typeof (parseInt(e.target.textContent)) === "number") bString += (e.target.textContent)
+    bString += e.target.textContent;
     displayText.textContent = bString;
 }
 
@@ -63,6 +64,8 @@ function displayResult(){
     if (operator === "multiply") result = multiply(a, b);
 
     displayText.textContent = result;
+
+    // b = result;
 
     console.log(result);
 
