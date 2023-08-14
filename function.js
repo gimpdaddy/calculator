@@ -11,10 +11,10 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 function operate(a, b, operator){
-    if (operator === "add") result = add(a, b);
-    if (operator === "subtract") result = subtract(a, b);
-    if (operator === "divide") result = divide(a, b);
-    if (operator === "multiply") result = multiply(a, b);
+    if (operator === "add") return add(a, b);
+    if (operator === "subtract") return subtract(a, b);
+    if (operator === "divide") return divide(a, b);
+    if (operator === "multiply") return multiply(a, b);
 }
 
 function clear() {
@@ -30,7 +30,7 @@ function clear() {
 function displayBstring(e) {
     bString += e.target.textContent;
     displayText.textContent = bString;
-    console.log(a, b, operator, result);
+    console.log(a, b, operator);
 }
 
 function storeVars(e) {
@@ -40,22 +40,38 @@ function storeVars(e) {
     bString = "";
     if (e) operator = e.target.id;
 
-    console.log(a, b, operator, result);
+    console.log(a, b, operator);
+}
+
+function chainResult(e){
+
+    storeVars(e);
+
+    if(a && b && operator) {
+    
+        b = operate(a, b, operator);
+
+        displayText.textContent = b;
+
+        console.log(a, b, operator);
+    }
+    
+
 }
 
 function displayResult(){
-
     storeVars();
+    if(a && b && operator) {
+    
+        bString = operate(a, b, operator);
 
-    operate(a, b, operator);
+        displayText.textContent = bString;
 
-    displayText.textContent = result;
+        b = undefined;
+        
 
-    bString = result;
-    // a = undefined;
-
-    console.log(a, b, operator, result);
-
+        console.log(a, b, operator);
+    }
 }
 
 //event listeners
@@ -63,16 +79,16 @@ const btnClear = document.getElementById("clear");
 btnClear.addEventListener("click", clear);
 
 const btnDivide = document.getElementById("divide");
-btnDivide.addEventListener("click", storeVars);
+btnDivide.addEventListener("click", chainResult);
 
 const btnMultiply = document.getElementById("multiply");
-btnMultiply.addEventListener("click", storeVars);
+btnMultiply.addEventListener("click", chainResult);
 
 const btnSubtract = document.getElementById("subtract");
-btnSubtract.addEventListener("click", storeVars);
+btnSubtract.addEventListener("click", chainResult);
 
 const btnAdd = document.getElementById("add");
-btnAdd.addEventListener("click", storeVars);
+btnAdd.addEventListener("click", chainResult);
 
 const btnEqual = document.getElementById("equal");
 btnEqual.addEventListener("click", displayResult)
