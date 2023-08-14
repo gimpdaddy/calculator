@@ -3,7 +3,6 @@ let bString = "";
 let a = undefined;
 let b = undefined;
 let operator = null;
-let result = undefined;
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -18,12 +17,11 @@ function operate(a, b, operator){
 }
 
 function clear() {
-    displayText.textContent = ""; 
+    displayText.textContent = "clear"; 
     bString = "";
     a = undefined;
     b = undefined;
     operator = null;
-    result = undefined;
     console.log("clear")
 }
 
@@ -55,12 +53,13 @@ function chainResult(e){
 
         console.log(a, b, operator);
     }
-    
 
 }
 
 function displayResult(){
+
     storeVars();
+
     if(a && b && operator) {
     
         bString = operate(a, b, operator);
@@ -69,9 +68,9 @@ function displayResult(){
 
         b = undefined;
         
-
         console.log(a, b, operator);
     }
+
 }
 
 //event listeners
@@ -98,4 +97,8 @@ btnNumbers.forEach(el => el.addEventListener("click", displayBstring));
 
 const displayText = document.querySelector(".display");
 
+//to add in:
 
+//decimal places
+//handle divide 0
+//handle = = or + + etc
