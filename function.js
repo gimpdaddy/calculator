@@ -31,25 +31,25 @@ function displayBstring(e) {
     console.log(a, b, operator);
 }
 
-function storeVars(e) {
-
+function shiftVars() {
     a = b;
     b = parseInt(bString);
     bString = "";
-    if (e) operator = e.target.id;
-
-    console.log(a, b, operator);
 }
 
 function chainResult(e){
 
-    storeVars(e);
+    if (!operator) shiftVars();
+
+    operator = e.target.id;
 
     if(a && b && operator) {
     
         b = operate(a, b, operator);
 
         displayText.textContent = b;
+
+        operator = null;
 
         console.log(a, b, operator);
     }
@@ -58,7 +58,7 @@ function chainResult(e){
 
 function displayResult(){
 
-    storeVars();
+    shiftVars();
 
     if(a && b && operator) {
     
@@ -67,6 +67,8 @@ function displayResult(){
         displayText.textContent = bString;
 
         b = undefined;
+
+        operator = null;
         
         console.log(a, b, operator);
     }
@@ -101,4 +103,3 @@ const displayText = document.querySelector(".display");
 
 //decimal places
 //handle divide 0
-//handle = = or + + etc
