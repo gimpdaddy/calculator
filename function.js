@@ -65,7 +65,7 @@ function displayResult(){
 
     displayText.textContent = result;
 
-    // b = result;
+    bString = result;
 
     console.log(result);
 
