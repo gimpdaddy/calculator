@@ -81,6 +81,8 @@ function displayResult(){
         operator = null;
         
         console.log(a, b, operator);
+    } else {
+        displayText.textContent = "error early="
     }
 
 }
