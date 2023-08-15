@@ -4,10 +4,18 @@ let a = undefined;
 let b = undefined;
 let operator = null;
 
+const updateDisplay = (text) => displayText.textContent = text; 
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
-// const divide = (a, b) => a / b;
+function divide(a, b) {
+    if (b === 0) {
+        return "error /0";
+    } else {
+        return (a / b).toFixed(2);
+    }
+}
 
 function neg1() {
     if (bString === 0 | bString === "") {
@@ -15,20 +23,12 @@ function neg1() {
     } else {
         bString = `${bString * -1}`;
     }
-    displayText.textContent = bString;
+    updateDisplay(bString);
 }
 
 function percentage() {
     bString = bString / 100;
-    displayText.textContent = bString;
-}
-
-function divide(a, b) {
-    if (b === 0) {
-        return "error /0";
-    } else {
-        return (a / b).toFixed(2);
-    }
+    updateDisplay(bString);
 }
 
 function operate(a, b, operator){
@@ -39,7 +39,7 @@ function operate(a, b, operator){
 }
 
 function clear() {
-    displayText.textContent = "clear"; 
+    updateDisplay("clear"); 
     bString = "";
     a = undefined;
     b = undefined;
@@ -49,7 +49,7 @@ function clear() {
 
 function displayBstring(e) {
     bString += e.target.textContent;
-    displayText.textContent = bString;
+    updateDisplay(bString);
     console.log(a, b, operator);
 }
 
@@ -69,7 +69,7 @@ function chainResult(e){
     
         b = operate(a, b, operator);
 
-        displayText.textContent = b;
+        updateDisplay(b);
 
         operator = null;
 
@@ -88,15 +88,16 @@ function displayResult(){
 
         console.log(bString);
 
-        displayText.textContent = bString;
+        updateDisplay(bString);
 
         b = undefined;
 
         operator = null;
         
         console.log(a, b, operator);
+
     } else {
-        displayText.textContent = "error early="
+        updateDisplay("error early=");
     }
 
 }
@@ -130,8 +131,3 @@ const btnPercentage = document.getElementById("percentage");
 btnPercentage.addEventListener("click", percentage);
 
 const displayText = document.querySelector(".display");
-
-//to add in:
-
-//decimal places
-//work with non integers
