@@ -48,7 +48,7 @@ function clear() {
 }
 
 function displayBstring(e) {
-    bString += e.target.textContent;
+    if (bString.length < 14) bString += e.target.textContent;
     updateDisplay(bString);
     console.log(a, b, operator);
 }
