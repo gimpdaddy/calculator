@@ -7,7 +7,15 @@ let operator = null;
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+// const divide = (a, b) => a / b;
+
+function divide(a, b) {
+    if (b === 0) {
+        return "error /0";
+    } else {
+        return a / b;
+    }
+}
 
 function operate(a, b, operator){
     if (operator === "add") return add(a, b);
@@ -43,7 +51,7 @@ function chainResult(e){
 
     operator = e.target.id;
 
-    if(a && b && operator) {
+    if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
     
         b = operate(a, b, operator);
 
@@ -60,9 +68,11 @@ function displayResult(){
 
     shiftVars();
 
-    if(a && b && operator) {
+    if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
     
         bString = operate(a, b, operator);
+
+        console.log(bString);
 
         displayText.textContent = bString;
 
