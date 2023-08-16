@@ -4,8 +4,7 @@ let a = undefined;
 let b = undefined;
 let operator = null;
 
-const updateDisplay = (text) => displayText.textContent = text; 
-
+// Operator functions
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -15,20 +14,6 @@ function divide(a, b) {
     } else {
         return (a / b).toFixed(2);
     }
-}
-
-function neg1() {
-    if (bString === 0 | bString === "") {
-        bString = "-";
-    } else {
-        bString = `${bString * -1}`;
-    }
-    updateDisplay(bString);
-}
-
-function percentage() {
-    bString = bString / 100;
-    updateDisplay(bString);
 }
 
 function operate(a, b, operator){
@@ -47,6 +32,31 @@ function clear() {
     console.log("clear")
 }
 
+function neg1() {
+    if (bString === 0 | bString === "") {
+        bString = "-";
+    } else {
+        bString = `${bString * -1}`;
+    }
+    updateDisplay(bString);
+}
+
+function percentage() {
+    bString = bString / 100;
+    updateDisplay(bString);
+}
+
+function displayResult(e){
+    chainResult(e);
+    bString = b;
+    b = undefined;
+    operator = null;
+}
+
+// Working functions
+const displayText = document.querySelector(".display");
+const updateDisplay = (text) => displayText.textContent = text;
+
 function displayBstring(e) {
     if (bString.length < 14) bString += e.target.textContent;
     updateDisplay(bString);
@@ -60,39 +70,13 @@ function shiftVars() {
 }
 
 function chainResult(e){
-
     if (!operator) operator = e.target.id;
-    
     shiftVars();
-
-    console.log(a, b, operator, "ops");
-
     if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
-    
         b = operate(a, b, operator);
-
         updateDisplay(b);
-
         operator = e.target.id;
-
-        console.log(a, b, operator);
     }
-
-}
-
-function displayResult(e){
-
-    chainResult(e);
-
-    bString = b;
-
-    b = undefined;
-
-    operator = null;
-        
-    // } else {
-    //     updateDisplay("error early=");
-
 }
 
 //event listeners
@@ -122,5 +106,3 @@ btnNeg1.addEventListener("click", neg1);
 
 const btnPercentage = document.getElementById("percentage");
 btnPercentage.addEventListener("click", percentage);
-
-const displayText = document.querySelector(".display");
