@@ -46,6 +46,16 @@ function percentage() {
     updateDisplay(bString);
 }
 
+function backspace(){
+    bString = String(bString);
+    if (bString.length === 1) {
+        bString = "";
+    } else {
+        bString = bString.slice(0, -1);
+    }
+    updateDisplay(bString);
+}
+
 function displayResult(e){
     chainResult(e);
     bString = b;
@@ -107,3 +117,6 @@ btnNeg1.addEventListener("click", neg1);
 
 const btnPercentage = document.getElementById("percentage");
 btnPercentage.addEventListener("click", percentage);
+
+const btnBackspace = document.getElementById("backspace");
+btnBackspace.addEventListener("click", backspace);
