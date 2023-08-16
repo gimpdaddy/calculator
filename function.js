@@ -48,6 +48,7 @@ function clear() {
 }
 
 function displayBstring(e) {
+    if (bString.includes(".") & e.target.textContent === ".") return;
     if (bString.length < 8) bString += e.target.textContent;
     updateDisplay(bString);
     console.log(a, b, operator);
