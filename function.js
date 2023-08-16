@@ -80,26 +80,18 @@ function chainResult(e){
 
 }
 
-function displayResult(){
+function displayResult(e){
 
-    shiftVars();
+    chainResult(e);
 
-    console.log(a, b, operator, "=");
-    if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
-    
-        bString = operate(a, b, operator);
+    bString = b;
 
-        // console.log(bString);
+    b = undefined;
 
-        updateDisplay(bString);
-
-        b = undefined;
-
-        operator = null;
+    operator = null;
         
     // } else {
     //     updateDisplay("error early=");
-    }
 
 }
 
