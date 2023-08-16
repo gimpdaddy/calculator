@@ -58,6 +58,7 @@ const displayText = document.querySelector(".display");
 const updateDisplay = (text) => displayText.textContent = text;
 
 function displayBstring(e) {
+    if (bString.includes(".") & e.target.textContent === ".") return;
     if (bString.length < 14) bString += e.target.textContent;
     updateDisplay(bString);
     console.log(a, b, operator);
