@@ -48,8 +48,7 @@ function clear() {
 }
 
 function displayBstring(e) {
-    if (bString.includes(".") & e.target.textContent === ".") return;
-    if (bString.length < 8) bString += e.target.textContent;
+    if (bString.length < 14) bString += e.target.textContent;
     updateDisplay(bString);
     console.log(a, b, operator);
 }
@@ -62,9 +61,11 @@ function shiftVars() {
 
 function chainResult(e){
 
-    if (!operator) shiftVars();
+    if (!operator) operator = e.target.id;
+    
+    shiftVars();
 
-    operator = e.target.id;
+    console.log(a, b, operator, "ops");
 
     if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
     
@@ -72,7 +73,7 @@ function chainResult(e){
 
         updateDisplay(b);
 
-        operator = null;
+        operator = e.target.id;
 
         console.log(a, b, operator);
     }
@@ -83,11 +84,12 @@ function displayResult(){
 
     shiftVars();
 
+    console.log(a, b, operator, "=");
     if(typeof a !== "undefined" && typeof b !== "undefined" && operator) {
     
         bString = operate(a, b, operator);
 
-        console.log(bString);
+        // console.log(bString);
 
         updateDisplay(bString);
 
@@ -95,10 +97,8 @@ function displayResult(){
 
         operator = null;
         
-        console.log(a, b, operator);
-
-    } else {
-        updateDisplay("error early=");
+    // } else {
+    //     updateDisplay("error early=");
     }
 
 }

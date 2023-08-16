@@ -10,13 +10,13 @@ body {
     border: solid;
     border-radius: 2%;
     background-color: lightgoldenrodyellow;
-    height: 700px;
-    width: 500px;
+    height: 500px;
+    width: 300px;
 }
 
 .display {
     height: 16.667%;
-    font-size: 6em;
+    font-size: 4em;
     align-self: flex-end;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
