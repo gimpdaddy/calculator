@@ -8,18 +8,22 @@ body {
     flex-direction: column;
     justify-content: space-around;
     border: solid;
+    border-radius: 3%;
+    background-color: lightgoldenrodyellow;
     height: 700px;
     width: 500px;
 }
 
 .display {
-    height: 20%;
-    font-size: 4em;
+    height: 16.667%;
+    font-size: 6em;
     align-self: flex-end;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .buttonsContainer {
-    height: 80%;
+    padding: 2%;
+    height: 83.333%;
     display: flex;
     flex-flow: row wrap-reverse;
     justify-content: space-evenly;
@@ -30,4 +34,13 @@ body {
     width: 24%;
     height: 19%;
     font-size: 2em;
+    border: 0px;
+}
+
+.nums {
+    background-color:lightgray;
+}
+
+.ops {
+    background-color: orange;
 }
